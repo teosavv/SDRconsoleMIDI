@@ -17,7 +17,7 @@ height = 13;
 // width
 width = 70;
 // chamfer amount for the top larger value => more chamfer
-chamfer = 0.1;
+chamfer = 0.3;
 // tolerance for the shaft, larger => looser fit
 shaft_tolerance = 0; //.15;
 
@@ -153,21 +153,22 @@ module knob_chamfered(h, r, chamfer) {
 // do it
 knob_chamfered(h=height, r=width/2, chamfer=chamfer);
 
-translate([0, 0, -4])
+translate([0, 0, -6])
   difference(){
-      cylinder(h=6, d=67);
+      cylinder(h=6, d=65);
       //cylinder(h=6, d=6+2*shaft_tolerance);
       difference()
 		{
             // round shaft hole
 			translate([ 0, 0, -1 ]) 
-			cylinder(r=3,h=6, $fn=fs);
+			cylinder(r=3,h=7, $fn=fs);
 					
 
 			// D shaft shape for shaft cutout
-			rotate( [0,0,90]) 
+			/*rotate( [0,0,90]) 
 			translate([-7.5,-5,0]) 
 			cube(size=[5,10,13],center=false);
+            */
 		}
       
         if(washer) {
